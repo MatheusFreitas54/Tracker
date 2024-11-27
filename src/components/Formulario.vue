@@ -5,23 +5,7 @@
             <input type="text" class="input" placeholder="Qual Tarefe você deseja iniciar?">
          </div>
          <div class="columns">
-            <div class="is-flex is-align-items-center is-justify-content-space-between">
-               <section class="mr-3 ml-3">
-                  <strong>00:00:00</strong>
-               </section>
-               <button class="button mr-3">
-                  <span class="icon">
-                     <i class="fas fa-play"></i>
-                  </span>
-                  <span>play</span>
-               </button>
-               <button class="button mr-3">
-                  <span class="icon">
-                     <i class="fas fa-play"></i>
-                  </span>
-                  <span>stop</span>
-               </button>
-            </div>
+            <Temporizador />
          </div>
       </div>
    </div>
@@ -29,9 +13,14 @@
 
 <script lang="ts">
    import { defineComponent, DefineComponent } from 'vue';
+   import Temporizador from './Temporizador.vue';
 
    export default defineComponent({
-      name: 'FormularioCadastro'
+      name: 'FormularioCadastro',
+      components: {
+         Temporizador
+      },
+      
    });
 </script>
 
