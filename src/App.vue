@@ -2,12 +2,14 @@
 import { defineComponent } from 'vue';
 import BarraLateral from './components/BarraLateral.vue';
 import Formulario from './components/Formulario.vue';
+import Tarefa from './components/Tarefa.vue';
 
 export default defineComponent({
   name: 'App',
   components: {
     BarraLateral,
-    Formulario
+    Formulario,
+    Tarefa
   }
 });
 </script>
@@ -19,6 +21,11 @@ export default defineComponent({
     </div>
     <div class="column is-three-quarter">
       <Formulario />
+      <div class="lista m-3">
+        <Tarefa />
+        <Tarefa />
+        <Tarefa />
+      </div>
     </div>
   </main>
 </template>
@@ -26,5 +33,7 @@ export default defineComponent({
 
 
 <style>
-
+  .lista {
+    padding: 1.24rem;
+  }
 </style>
