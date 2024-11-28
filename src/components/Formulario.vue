@@ -1,8 +1,8 @@
 <template>
-   <div class="box">
+   <div class="box form">
       <div class="columns">
          <div class="column is-8" role="form" aria-label="Formulário para criação de uma nova tarefa">
-            <input type="text" class="input" placeholder="Qual Tarefe você deseja iniciar?" v-model="descricao">
+            <input type="text" class="input" placeholder="Qual Tarefa você deseja iniciar?" v-model="descricao">
          </div>
          <div class="columns">
             <Temporizador @ao-temporizador-finalizado="finalizarTarefa"/>
@@ -39,6 +39,10 @@
    });
 </script>
 
-<style scoped>
+<style>
+   .form {
+      color: var(--texto-primario);
+      background-color: var(--bg-primario);
+   }
 
 </style>

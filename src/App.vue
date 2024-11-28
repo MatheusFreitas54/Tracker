@@ -1,3 +1,19 @@
+<template>
+  <main class="columns is-gapless is-multiline" :class="{ 'dark-mode': modoEscuroAtivo }">
+    <div class="column is-one-quarter">
+      <BarraLateral @aoTemaAlterado="trocarTema"/>
+    </div>
+    <div class="column is-three-quarter content">
+      <Formulario @aoSalvarTarefa="salvarTarefa" />
+      <div class="lista m-3">
+        <Tarefa v-for="(tarefa, index) in tarefas" :key="index" :tarefa="tarefa"/>
+        <Box id="box" v-if="listaEstaVazia"> Crie sua primeira tarefa para iniciamos 😁</Box>
+      </div>
+    </div>
+  </main>
+</template>
+
+
 <script lang="ts">
 import { defineComponent } from 'vue';
 import BarraLateral from './components/BarraLateral.vue';
@@ -16,7 +32,8 @@ export default defineComponent({
   },
   data () {
     return {
-      tarefas: [] as ITarefa[]
+      tarefas: [] as ITarefa[],
+      modoEscuroAtivo: false
     }
   },
   computed: {
@@ -27,26 +44,13 @@ export default defineComponent({
   methods: {
     salvarTarefa (tarefa: ITarefa) {
       this.tarefas.push(tarefa)
+    },
+    trocarTema (modoEscuroAtivo: boolean) {
+      this.modoEscuroAtivo = modoEscuroAtivo
     }
   }
 });
 </script>
-
-<template>
-  <main class="columns is-gapless is-multiline">
-    <div class="column is-one-quarter">
-      <BarraLateral/>
-    </div>
-    <div class="column is-three-quarter">
-      <Formulario @aoSalvarTarefa="salvarTarefa" />
-      <div class="lista m-3">
-        <Tarefa v-for="(tarefa, index) in tarefas" :key="index" :tarefa="tarefa"/>
-        <Box id="box" v-if="listaEstaVazia"> Crie sua primeira tarefa para iniciamos 😁</Box>
-      </div>
-    </div>
-  </main>
-</template>
-
 
 
 <style>
@@ -57,5 +61,19 @@ export default defineComponent({
   #box {
     margin: 5px 50px;
     text-align: center;
+  }
+
+  main {
+    --bg-primario: #fff;
+    --texto-primario: #000;
+  }
+
+  main.dark-mode {
+    --bg-primario: #2b2d42;
+    --texto-primario: #ddd;
+  }
+
+  .content {
+    background-color: var(--bg-primario);
   }
 </style>

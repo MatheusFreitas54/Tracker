@@ -19,6 +19,7 @@
 
    .box {
       background: #FAF0CA;
+      color: #707070;
    }
 
 </style>
