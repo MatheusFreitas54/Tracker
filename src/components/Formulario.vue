@@ -40,9 +40,14 @@
 </script>
 
 <style>
-   .form {
+   .form, .input, .input::placeholder {
       color: var(--texto-primario);
       background-color: var(--bg-primario);
+   }
+
+   .form {
+      border-radius: 0;
+      box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
    }
 
 </style>

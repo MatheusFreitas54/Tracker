@@ -20,7 +20,7 @@ export default defineComponent({
    },
    computed: {
       textoBotao () {
-         if (this.modoEscuroAtivo) {
+         if (!this.modoEscuroAtivo) {
             return 'Tema Claro'
          } 
          return 'Tema Escuro'

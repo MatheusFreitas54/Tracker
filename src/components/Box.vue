@@ -1,5 +1,5 @@
 <template>
-   <div class="box has-text-weight-bold">
+   <div class="box has-text-weight-bold" :style="estilos">
       <slot></slot>
    </div>
 </template>
@@ -10,7 +10,13 @@
 
    export default defineComponent({
       name: 'BoxTarefa',
-      
+      data () {
+         return {
+            estilos: {
+               background: '#FAFOCA'
+            }
+         }
+      }
    });
 
 </script>
