@@ -3,13 +3,31 @@ import { defineComponent } from 'vue';
 import BarraLateral from './components/BarraLateral.vue';
 import Formulario from './components/Formulario.vue';
 import Tarefa from './components/Tarefa.vue';
+import ITarefa from './interfaces/ITarefa';
+import Box from './components/Box.vue';
 
 export default defineComponent({
   name: 'App',
   components: {
     BarraLateral,
     Formulario,
-    Tarefa
+    Tarefa,
+    Box
+  },
+  data () {
+    return {
+      tarefas: [] as ITarefa[]
+    }
+  },
+  computed: {
+    listaEstaVazia () : boolean {
+      return this.tarefas.length === 0
+    }
+  },
+  methods: {
+    salvarTarefa (tarefa: ITarefa) {
+      this.tarefas.push(tarefa)
+    }
   }
 });
 </script>
@@ -20,11 +38,10 @@ export default defineComponent({
       <BarraLateral/>
     </div>
     <div class="column is-three-quarter">
-      <Formulario />
+      <Formulario @aoSalvarTarefa="salvarTarefa" />
       <div class="lista m-3">
-        <Tarefa />
-        <Tarefa />
-        <Tarefa />
+        <Tarefa v-for="(tarefa, index) in tarefas" :key="index" :tarefa="tarefa"/>
+        <Box id="box" v-if="listaEstaVazia"> Crie sua primeira tarefa para iniciamos 😁</Box>
       </div>
     </div>
   </main>
@@ -35,5 +52,10 @@ export default defineComponent({
 <style>
   .lista {
     padding: 1.24rem;
+  }
+
+  #box {
+    margin: 5px 50px;
+    text-align: center;
   }
 </style>
