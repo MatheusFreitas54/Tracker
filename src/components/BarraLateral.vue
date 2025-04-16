@@ -4,6 +4,22 @@
          <img src="../assets/logo.png" alt="">
       </h1>
       <button class="button" @click="alterarTema"> {{ textoBotao }}</button>
+      <nav class="panel mt-5">
+         <ul>
+            <li>
+               <RouterLink to="/" class="link">
+                  <i class="fas fa-tasks"></i>
+                  Tarefas
+               </RouterLink>
+            </li>
+            <li>
+               <RouterLink to="/projetos" class="link">
+                  <i class="fas fa-project-diagram"></i>
+                  Projetos
+               </RouterLink>
+            </li>
+         </ul>
+      </nav>
    </header>
 </template>
 
@@ -51,5 +67,27 @@ export default defineComponent({
          height: auto;
       }
    }
+
+   .panel {
+      background-color: #00000000;
+      border: none;
+      box-shadow: none;
+      display: flex;
+      justify-content: baseline;
+      padding: 0 0 0 1%;
+   }
+
+   .panel li {
+      margin: 8px 0;
+   }
+
+   .link {
+      color: #fff;
+   }
+
+   .link:hover, .link.router-link-active {
+      color: #faf0ca;
+   }
+
 
 </style>
